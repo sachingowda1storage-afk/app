@@ -1,0 +1,709 @@
+{
+    "8.1": {
+        "id": "8.1",
+        "title": "Capacity and Energy test at room temperature and different discharge rates",
+        "purpose": "Measures battery capacity in Ah and energy in Wh at constant current discharge rates (C/3, C/2, 1C, 1.5C, 2C and manufacturer's max C-rate) at room temperature.",
+        "requirements": "Report Time vs SOC, Current, Voltage, Cell temperature (max/min), Row voltages (max/min), BMS error codes and ambient temperature for each charge/discharge; discharged capacity (Ah) & energy (Wh) vs SOC at each discharge test; discharge capacity & energy at each rate; charged capacity & energy at each charge; energy round-trip efficiency at each discharge rate; row-to-row voltage difference vs SOC.",
+        "acceptance_criteria": "Capacity & energy should meet the requirements as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.2": {
+        "id": "8.2",
+        "title": "Capacity and energy test at different temperatures",
+        "purpose": "Characterizes battery capacity at different temperatures (40\u00b0C, 10\u00b0C, 0\u00b0C, -10\u00b0C) and various discharge rates.",
+        "requirements": "Report SOC, Current, Voltage, Cell temperature and ambient temperature vs time at each discharge test and standard charge; discharged/charged capacity, energy and average power at each discharge test; energy round-trip efficiency; discharged energy vs SOC (% rated capacity); end-of-discharge voltage of all cell voltage points; determined C/3 rated capacity as basic value; row-to-row voltage difference vs SOC.",
+        "acceptance_criteria": "Capacity & energy should meet the requirements as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.3": {
+        "id": "8.3",
+        "title": "Power and internal resistance test",
+        "purpose": "Determines dynamic power capability, Ohmic resistance for charge/discharge, and OCV of the battery as a function of SOC and temperature, based on a realistic pulse power characterization profile derived from vehicle driving operation.",
+        "requirements": "Report discharge power (0.1s-120s) and regenerative power (0.1s-20s) vs SOC & temperature; discharge and charge resistance (incl. overall resistance) vs SOC & temperature; open circuit voltage vs SOC & temperature; deviation from first/last RT test; temperature vs time. If current was reduced due to voltage limits, mark clearly in protocol/results.",
+        "acceptance_criteria": "Internal resistance and peak power observed should meet the requirements as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.4": {
+        "id": "8.4",
+        "title": "Energy efficiency test",
+        "purpose": "Determines battery system behaviour and energy efficiency at different fast charging levels (Nominal, 1C, 2C, Ic,max) at 40\u00b0C, RT, 0\u00b0C and Tmin, since fast-charge efficiency significantly influences overall vehicle efficiency.",
+        "requirements": "Report current, voltage, battery temperature, ambient temperature vs time for each discharge and following fast charge; discharge/charged capacity, energy and average power following each discharge; end-of-discharge voltage of all cell voltage points; energy efficiency for specified \u0394SOCs at each standard discharge-fast charge test.",
+        "acceptance_criteria": "Energy efficiency observed should meet the requirements as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.5": {
+        "id": "8.5",
+        "title": "Charge characteristics test",
+        "purpose": "Evaluates the charging characteristics of the battery using the appropriate charger/charging profile (preferably lab bike setup) to measure charging duration and characteristics; if multiple chargers exist (650W/950W/1500W) each must be tested and compared.",
+        "requirements": "Not listed as a separate 'Requirements' clause in the document; procedure requires recording overall charging time, CC-CV transition time, maximum charger/cell/battery temperature and voltage across chargers, and mapping the maximum charge request current from the BMS.",
+        "acceptance_criteria": "Charge characterization should meet charge time requirement as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.6": {
+        "id": "8.6",
+        "title": "Insulation resistance test",
+        "purpose": "Ensures a minimum value of ohmic resistance to avoid current between galvanically isolated circuits and conductive parts of the battery; indicates relative quality of the insulation system/material. 500V DC applied for 60s between terminals, terminals-to-housing, etc., at both 25\u00b0C and 55\u00b0C.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "The insulation resistance shall be greater than 10 M\u03a9 at both 25\u00b0C and 55\u00b0C."
+    },
+    "8.7": {
+        "id": "8.7",
+        "title": "Short-circuit test",
+        "purpose": "Evaluates a battery's ability to withstand a short-circuit condition after being heated to 57 \u00b1 4\u00b0C and subjected to a short circuit (<5 m\u03a9 total external resistance) with passive protection devices operational.",
+        "requirements": "Measured data shall include battery pack voltage, current and temperature vs time; insulation resistance between case and terminals before/after test.",
+        "acceptance_criteria": "At the end of the test there shall be no: P - Physical damage to casing/mechanical parts; M - Melting of components; F - Fire or explosion."
+    },
+    "8.8": {
+        "id": "8.8",
+        "title": "Over charge test",
+        "purpose": "Verifies the performance of the overcharge protection by charging the device at \u22651/3C until it automatically interrupts/limits charging, or (if no such function) to twice its rated charge capacity.",
+        "requirements": "Measured data shall include battery pack voltage, current and temperature vs time; record error/fault/warning indicated by BMS with time and conditions of cut-off and recovery.",
+        "acceptance_criteria": "During the test there shall be no evidence of electrolyte leakage, rupture (HV batteries only), fire, or explosion. Electrolyte leakage verified by visual inspection without disassembly."
+    },
+    "8.9": {
+        "id": "8.9",
+        "title": "Over discharge test",
+        "purpose": "Verifies performance of the over-discharge protection, which shall interrupt/limit discharge current to prevent severe events caused by too-low SOC, by discharging at \u22651/3C until interrupt/limit occurs or to 25% of nominal voltage.",
+        "requirements": "Measured data shall include battery pack voltage, current and temperature vs time; record error/fault/warning indicated by BMS with time/conditions of cut-off and recovery.",
+        "acceptance_criteria": "During the test there shall be no evidence of electrolyte leakage, rupture (HV only), fire, or explosion; verified by visual inspection without disassembly."
+    },
+    "8.10": {
+        "id": "8.10",
+        "title": "Imbalanced charging test (Imbalance charge/discharge test)",
+        "purpose": "Determines whether a battery pack with series-connected cells can maintain the cells within specified operating parameters when it becomes imbalanced (one cell/row at ~50% SoC vs rest fully discharged, or disconnected cells in a parallel string).",
+        "requirements": "At conclusion of observation, samples with hazardous voltage circuits subjected to insulation resistance test (no humidity conditioning); record error/fault/warning from BMS with time/conditions of cut-off and recovery.",
+        "acceptance_criteria": "Max/min voltage limit of cells shall not exceed manufacturer's specification / Design Input sheet / SRS. Non-compliant results: E-Explosion, F-Fire, C-Combustible concentrations, R-Rupture, L-Electrolyte leakage, V-Venting, S-Electric shock hazard, P-Loss of protection controls."
+    },
+    "8.11": {
+        "id": "8.11",
+        "title": "Passive balancing functionality test",
+        "purpose": "Verifies BMS passive balancing circuit functionality during imbalance conditions by introducing a 20 mV cell imbalance across one of 14 rows and cycling the pack through rest, drive-cycle discharge to 30% SOC, and full charge, repeated multiple times at both 100% and 30% SOC.",
+        "requirements": "Note the time taken to balance the imbalanced rows; monitor the temperature of BMS components used for balancing.",
+        "acceptance_criteria": "At the end of the final 8-hour rest, the CIM (cell imbalance) value should be < 10 mV."
+    },
+    "8.12": {
+        "id": "8.12",
+        "title": "Over temperature protection test",
+        "purpose": "Verifies performance of protection measures against internal overheating during operation (even under cooling-function failure) by continuously charging/discharging while gradually raising chamber temperature to max operating (or manufacturer-defined) temperature.",
+        "requirements": "Not separately listed; captured in acceptance criteria below.",
+        "acceptance_criteria": "Test ends when device inhibits/limits charge/discharge to prevent temperature rise, or temperature stabilizes (<4\u00b0C gradient over 2h); audio-visual alarm should be triggered; no evidence of electrolyte leakage, rupture (HV only), fire, or explosion."
+    },
+    "8.13": {
+        "id": "8.13",
+        "title": "Under temperature protection test",
+        "purpose": "Verifies functionality of the battery below operating temperature by gradually decreasing chamber temperature to the minimum operational temperature specified in the TVSM drawing.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "The safety device should inhibit and/or limit charge/discharge above the specified threshold temperature; no evidence of E-Electrolyte leakage, R-Rupture (HV only), F-Fire, E-Explosion."
+    },
+    "8.14": {
+        "id": "8.14",
+        "title": "Over current protection test",
+        "purpose": "Evaluates the effect of charging and discharging the battery at a constant current greater than the rated maximum current mentioned in the TVSM drawing, until protective devices interrupt.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Protective devices should interrupt charging/discharging within the time duration mentioned in TVSM drawing / TVSM SRS / PDD; no evidence of E-Electrolyte leakage, R-Rupture (HV only), F-Fire, E-Explosion."
+    },
+    "8.15": {
+        "id": "8.15",
+        "title": "Regen characteristics test",
+        "purpose": "Verifies battery response to the regen current/power fed back during vehicle deceleration and braking, via a charge/discharge cycle using an appropriate drive-cycle profile (discharge + regen power) with supporting vehicle components.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Battery pack should accept regen power/current as per manufacturer recommendations, per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.16": {
+        "id": "8.16",
+        "title": "BMS node allocation test",
+        "purpose": "Validates the BMS node allocation function when two or more batteries are connected in parallel; battery IDs should auto-assign and remain unchanged even after the batteries are physically swapped.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS should be able to allocate pack configuration according to the algorithms (IDs remain consistent even after multiple swaps)."
+    },
+    "8.17": {
+        "id": "8.17",
+        "title": "Parallel pack configuration test",
+        "purpose": "Validates characteristics of battery packs while charging and discharging when connected in parallel, tested at system level (lab bike) across SOC differences of 0%, 5%, 30% and 50% between packs A/B/C.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Charge: pack(s) with lower SOC charged first until SoC/terminal voltage equalizes, then others charged subsequently. Discharge: pack(s) with higher SOC discharged first until equalized, then others discharged. In both cases, no errors should arise from the battery packs."
+    },
+    "8.18": {
+        "id": "8.18",
+        "title": "Reverse polarity test",
+        "purpose": "Validates BMS protection circuit functionality against reverse polarity input by reversing the wiring-harness-side connector terminals and charging for 2 hours with CAN data logging.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Battery and charger components should not fail due to reverse polarity; test should not result in fire/smoke from either; post-test, both battery and charger should remain functional."
+    },
+    "8.19": {
+        "id": "8.19",
+        "title": "Row to Row voltage difference measurement test (Cell imbalance)",
+        "purpose": "Validates row-to-row imbalance during charge and discharge by charging/discharging at max allowable current while logging BMS row-voltage data.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Row-to-row voltage difference should not exceed >50 mV at loaded condition, and should not exceed >15 mV after 30 minutes rest post charge/discharge."
+    },
+    "8.20": {
+        "id": "8.20",
+        "title": "Audio-visual alarm functionality test",
+        "purpose": "Validates functionality of the audio-visual alarm unit by manually overheating one cell (with temperature sensor) beyond operating temperature.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Audio-visual alarm unit should trigger once BMS max cell temperature exceeds threshold; NTC faults should not be shown as an alarm; sound level and light illumination level should meet specification per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.21": {
+        "id": "8.21",
+        "title": "Audio Visual alarm unit short circuit test",
+        "purpose": "Evaluates BMS capability to withstand a short-circuit condition of the audio-visual alarm circuit; battery temperature raised to trigger the alarm, then the alarm unit input is short-circuited using a wire.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "There should not be a failure in the BMS components after the short-circuit test; audio-visual alarm input should return to normal condition after removing the short circuit."
+    },
+    "8.22": {
+        "id": "8.22",
+        "title": "Self-discharge characteristics test",
+        "purpose": "Measures the SOC loss of a battery system if not used for an extended period (vehicle parked without charging), across 7 rest periods (2/7/30 days), 3 SOC levels (0/30/100%) and 3 temperatures (10/25/40\u00b0C).",
+        "requirements": "Report remaining C/3 energy & SOC from initial 100% SOC (loss as % of initial 100% SOC after each rest period); auxiliary energy consumption (12V DC) for BMS/electronics in W-h per rest period; graph of residual capacity vs rest period across the 7 periods and 3 temperatures.",
+        "acceptance_criteria": "% Loss observed should meet the requirements as per TVSM drawing / TVSM SRS / PDD/DIS. Battery pack stored at 0% SOC should be able to recover by charging."
+    },
+    "8.23": {
+        "id": "8.23",
+        "title": "SOH loss at storage",
+        "purpose": "Measures the SOH loss of a battery if stored for an extended period (e.g., shipping from manufacturer to customer), which may be due to temporary self-discharge or permanent/semi-permanent SOH loss mechanisms; measured after 30/90/180/365-day rest periods at 10/25/40\u00b0C with terminals disconnected.",
+        "requirements": "Report remaining C/3 energy and SOC from the initial SOC; loss of energy and SOC after the rest period expressed as a percentage of the initial SOC.",
+        "acceptance_criteria": "% Loss observed should meet the requirements as per TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.24": {
+        "id": "8.24",
+        "title": "EMC Test",
+        "purpose": "Verifies compliance with EMC requirements as per AIS 004 part 3, using EMC anechoic chamber, RF amplifiers, antennas, field probes, EMI receivers.",
+        "requirements": "Refer AIS 004 (Part 3).",
+        "acceptance_criteria": "Refer AIS 004 (Part 3)."
+    },
+    "8.25": {
+        "id": "8.25",
+        "title": "Wiring harness test",
+        "purpose": "Evaluates the performance of the wiring cord set and connector used in the battery pack, subjecting them to applicable tests per TSES 176 (conductor resistance, heat resistance, low temperature, wire crimping strength, mate/unmate force between connectors).",
+        "requirements": "Refer TSES_176 latest version.",
+        "acceptance_criteria": "Refer TSES_176 latest version."
+    },
+    "8.26": {
+        "id": "8.26",
+        "title": "Thermistors pull off strength test",
+        "purpose": "Evaluates the pull-off strength of the thermistor pasted on the cell; thermistor is pulled out from the cell (10 samples tested).",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Pull-off strength should meet requirement as given in TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.27": {
+        "id": "8.27",
+        "title": "Weld pull out strength test",
+        "purpose": "Evaluates the pull-out strength of the spot welding used for connecting the cell and interconnector, using a motorised pull tester to determine the minimum load to separate them.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "The load required to pull out the interconnector from the cell shall meet TVSM drawing / TVSM SRS / PDD."
+    },
+    "8.28": {
+        "id": "8.28",
+        "title": "Vibration test",
+        "purpose": "Verifies the safety performance of the battery under a vibration environment experienced during normal vehicle operation; sinusoidal logarithmic sweep 7-200-7 Hz over 15 min, repeated 12 times (3 hours total) in the vertical mounting direction, at SOC in the upper 50% of normal operating range.",
+        "requirements": "Not listed as a distinct clause; folded into the extensive acceptance criteria (performance check + visual/teardown analysis) below.",
+        "acceptance_criteria": "High-rate discharge post-test with no abnormal BMS board temperature rise; logged CAN data shows no interruption, no sudden SOC changes, no abnormalities in SOC/temperature/voltage/current; standard charge/discharge delivers capacity & energy >99% of initial; row-to-row voltage difference (CIM) remains within 10 mV (pre/post difference \u226410 mV); insulation resistance >10 M\u03a9 at 500V (LV & HV packs); no mechanical damage; leak value within acceptable range; no electrolyte leakage/rupture (HV only)/fire/explosion; torque loss within drawing limits (incl. BMS mounting, studs, MLPCB, cell holder); no rattling noise; no loosened/dislodged capacitors or components; no gasket damage; no discoloration or squeezing of PCM/interconnects/WH/thermistor wire/BMS couplers/MLPCB connectors; no loss of communication throughout logging."
+    },
+    "8.29": {
+        "id": "8.29",
+        "title": "Mechanical shock test",
+        "purpose": "Applicable to packs/systems mounted at rigid points of the body or frame, simulating loads such as driving over a kerbstone at high speed; half-sine shock pulses (1500 m/s\u00b2 / 6ms for <12kg, or 500 m/s\u00b2 / 11ms for \u226512kg), 3 shocks each in positive/negative directions across 3 perpendicular mounting positions (18 shocks total).",
+        "requirements": "Not listed as a distinct clause; folded into acceptance criteria below.",
+        "acceptance_criteria": "High-rate discharge post-test with no abnormal BMS board temperature rise; CAN data shows no interruption/sudden SOC change/abnormalities; standard charge/discharge delivers capacity & energy >99% of initial; row-to-row CIM within 10 mV; insulation resistance >10 M\u03a9 at 500V; no mechanical damage; leak value acceptable; no electrolyte leakage/rupture (HV only)/fire/explosion; torque loss within drawing limits; no rattling noise; no loosened components; no gasket damage/cuts; no discoloration/squeezing of PCM/interconnects/WH/thermistor wire/BMS couplers/MLPCB; no communication loss."
+    },
+    "8.30": {
+        "id": "8.30",
+        "title": "Drop test for battery pack intended for service handling only",
+        "purpose": "Evaluates whether a hazard exists when a battery pack is subjected to an inadvertent drop during installation or removal from the vehicle; fully charged pack dropped from \u22651 m onto a concrete surface (at least once; not solely a flat drop).",
+        "requirements": "Not separately listed; examined within 6-24h post-drop, subjected to dielectric/insulation resistance test if near ambient, then physical examination and leak test.",
+        "acceptance_criteria": "No fire/smoke during observation period; insulation resistance >10 M\u03a9 at 500V; battery should pass leak test; no mechanical damage; capacity & energy >99% of initial value; if leak & mechanical checks pass, battery is subjected to immersion test."
+    },
+    "8.31": {
+        "id": "8.31",
+        "title": "Drop test for battery pack intended to be removable by the user",
+        "purpose": "Evaluates whether a hazard exists when a battery pack is subjected to an inadvertent drop during lifting/handling by the user (charging or replacement); free-fall from 1.0 m onto concrete, dropped six times from different orientations.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "No fire/smoke during observation period; insulation resistance >10 M\u03a9 at 500V; battery should pass leak test; no mechanical damage; capacity & energy >99% of initial value."
+    },
+    "8.32": {
+        "id": "8.32",
+        "title": "Leak test",
+        "purpose": "Evaluates the battery pack gasket's effectiveness via two methods: (1) leak-test apparatus measuring charging/balancing/detection time, and (2) dry air pressurization (0-0.2 bar) with soap-solution bubble check at gasket/sealant areas.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Test 1: leak value should be within limits as per TVSM drawing. Test 2: the battery pack should not exhibit any bubble or foam formation."
+    },
+    "8.33": {
+        "id": "8.33",
+        "title": "Thermal shock cycling test / Thermal test",
+        "purpose": "Assesses cell and battery seal integrity and internal electrical connections using rapid, extreme temperature changes; cells/batteries stored \u22656h at 72\u00b12\u00b0C then \u22656h at -40\u00b12\u00b0C (max 30 min transfer time), repeated for 10 total cycles, followed by 24h at ambient (large batteries \u226512kg require \u226512h exposure; data logged for \u22653 cycles).",
+        "requirements": "Not listed as a distinct clause; folded into acceptance criteria below.",
+        "acceptance_criteria": "High-rate discharge post-test with no abnormal BMS board temperature rise; CAN data shows no interruption/sudden SOC change/abnormalities; standard charge/discharge delivers capacity & energy >99% of initial; CIM within 10 mV; insulation resistance >10 M\u03a9 at 500V; audio-visual alarm (if present) activates at set alarm temperature and remains functional after test; no mechanical damage; no electrolyte leakage/rupture (HV only)/fire/explosion; torque loss within drawing limits; no gasket damage/cuts; no discoloration/squeezing of components; cells/batteries meet requirement if no leakage, venting, disassembly, rupture, or fire, and OCV after testing is not less than 90% of pre-test voltage (not applicable to fully discharged states)."
+    },
+    "8.34": {
+        "id": "8.34",
+        "title": "Dewing (Temperature Change)",
+        "purpose": "Simulates use under high ambient humidity; addresses electrical malfunctions caused by moisture (e.g., leakage current from a soaked PCB) and a 'breathing effect' that draws humid ambient air inside as the system cools; test per IEC 60068-2-30 Db with humidity/temperature profile per Fig.3, 5 cycles, operating mode 2.1 per ISO 16750-1.",
+        "requirements": "The functional status shall be Class A as specified.",
+        "acceptance_criteria": "Battery observed for 24 hrs at RT with no fire/smoke; logged CAN data shows no interruption and no abnormalities in SOC/temperature/voltage/current during & after test; insulation resistance >10 M\u03a9 at 500V; battery should pass leak test after dewing test."
+    },
+    "8.35": {
+        "id": "8.35",
+        "title": "Immersion test",
+        "purpose": "Intended for electric energy storage assemblies potentially subjected to immersion (e.g., under-body location); determines resistance to a hazardous condition from temporary immersion in water due to vehicle flooding; enclosure fully immersed per specified depth/duration (30 min) with vehicle-side connector and intended vehicle parts.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Torque loss in assembly fasteners at end of test shall be within drawing limits; no BMS errors triggered (E-Explosion, F-Fire, S-Electric shock hazard/isolation resistance below limit); no water traces found inside the battery pack."
+    },
+    "8.36": {
+        "id": "8.36",
+        "title": "Altitude simulation",
+        "purpose": "Simulates air transport under low-pressure conditions; test cells/batteries stored at \u226411.6 kPa for \u22656 hours at ambient (20\u00b15\u00b0C) in discharge mode with continuous data collection.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Cells and batteries meet the requirement if there is no leakage, venting, disassembly, rupture, or fire, and OCV after testing is not less than 90% of pre-test voltage (not applicable to fully discharged states); measured BMS data shall not have deviations or errors from initial data."
+    },
+    "8.37": {
+        "id": "8.37",
+        "title": "Resistance to fluid",
+        "purpose": "Evaluates the effect of vehicle fluids on the battery pack; test performed per TSES 780 (if painted) or TSES 083 (if powder coated).",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "No explosion, fire, or damage to the charging port or charger allowed after the test; battery pack rinsed thoroughly with no appearance defects such as rusting, blackening, or cracks in externally visible areas."
+    },
+    "8.38": {
+        "id": "8.38",
+        "title": "Battery connector corrosion resistance test",
+        "purpose": "Validates corrosion resistance properties of connector terminals under a corrosive environment; both battery-side and vehicle-side connectors stored in corrosive environment for 30 days per IEC 60068-2-52, with functionality tested before and after.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Connectors should meet functional requirements after the test and should not get corroded after the storage period."
+    },
+    "8.39": {
+        "id": "8.39",
+        "title": "Label permanence test",
+        "purpose": "Evaluates the permanence of an adhesive label not previously subjected to an evaluation program; label is rubbed for 15s with a water-soaked cloth, then for 1s with a petroleum spirit/hexane-soaked cloth.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Sample label shall remain legible, show no evidence of damage including curling, and shall not be easily removable by hand from the adhered surface. Additional requirements: appearance - no significant injuries, variegated colour, or uneven gloss, text legible; peel-off strength 180\u00b0 peel \u2265 500 gf/inch (25 mm); temperature range -15\u00b0C to 115\u00b0C."
+    },
+    "8.40": {
+        "id": "8.40",
+        "title": "Staircase roll over test for removable battery pack",
+        "purpose": "Evaluates whether a hazard exists when a battery pack is subjected to a drop during lifting/handling on a staircase by the user during charging or replacement; fully charged pack dropped three times from 1.0 \u00b1 0.01 m onto a staircase, with observation and charge/discharge cycling if operational.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "Battery pack should pass leak test; there shall not be any damage on the battery enclosure; vibration test to be performed after the drop test as per TSES. Non-compliant results: E-Explosion, F-Fire, C-Combustible concentrations, R-Rupture, L-Electrolyte leakage, S-Electric shock hazard, P-Loss of protection controls."
+    },
+    "8.41": {
+        "id": "8.41",
+        "title": "Battery pack thermal characteristics test",
+        "purpose": "Evaluates thermal characteristics of battery pack components (BMS elements, interconnector, bus bar, etc.) by instrumenting the pack with thermocouples at simulation-identified hotspot locations and subjecting it to maximum allowable charge/discharge at 25\u00b0C and 40\u00b0C.",
+        "requirements": "During charge and discharge, all temperature sensor data should be logged along with BMS parameters; the maximum temperature rise over time for various components should be recorded.",
+        "acceptance_criteria": "All component temperatures should remain within their operating limits (refer to DIS and SRS for specific limits)."
+    },
+    "8.42": {
+        "id": "8.42",
+        "title": "Pack voltage accuracy test",
+        "purpose": "Validates the accuracy of pack voltage measurement by the BMS, using a Fluke multimeter (accuracy <0.5%) or equivalent double-accuracy instrument.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.2.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.2."
+    },
+    "8.43": {
+        "id": "8.43",
+        "title": "Open circuit or wire off in the Cell taps",
+        "purpose": "Validates the BMS behaviour during a cell-tap open-circuit or wire-off state.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.16.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.16."
+    },
+    "8.44": {
+        "id": "8.44",
+        "title": "Cell voltage accuracy test",
+        "purpose": "Validates the accuracy of cell voltage measurement by the BMS using a Fluke multimeter and diagnostic tool/logger.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.4.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.4."
+    },
+    "8.45": {
+        "id": "8.45",
+        "title": "Current measurement accuracy test",
+        "purpose": "Validates the accuracy of current measurement by the BMS using a clamp meter with accuracy better than the BMS's current-sensing specification.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.6.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.6."
+    },
+    "8.46": {
+        "id": "8.46",
+        "title": "Thermistor Accuracy Test",
+        "purpose": "Validates the thermistor measurement by the BMS using a thermal chamber and diagnostic tool.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.9.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.9."
+    },
+    "8.47": {
+        "id": "8.47",
+        "title": "Operating temperature test",
+        "purpose": "Validates the operation of the BMS across its complete operating temperature range using a thermal chamber.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.17.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.17."
+    },
+    "8.48": {
+        "id": "8.48",
+        "title": "Storage temperature test",
+        "purpose": "Validates the storage conditions of the BMS across its complete temperature range using a thermal chamber.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.18.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.18."
+    },
+    "8.49": {
+        "id": "8.49",
+        "title": "Quiescent current consumption test",
+        "purpose": "Evaluates sleep-mode power consumption by the BMS using a Fluke 362 clamp meter.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.28.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.28."
+    },
+    "8.50": {
+        "id": "8.50",
+        "title": "Operating power consumption test",
+        "purpose": "Validates the power consumed by the BMS in operating condition using a Fluke clamp meter.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.29.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.29."
+    },
+    "8.51": {
+        "id": "8.51",
+        "title": "Transient voltage test (Power line + Signal line transient tests)",
+        "purpose": "Power line transient test: checks the BMS's withstanding capacity during electrical transients along the 48V line (LV 148 pulse generator). Signal line transient test: checks withstanding capacity against transient transmission coupled via I/O lines other than supply lines (per ISO 7637-3).",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.31 (both sub-tests).",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.31 (both sub-tests)."
+    },
+    "8.52": {
+        "id": "8.52",
+        "title": "Transient over voltage test",
+        "purpose": "Evaluates the BMS's resistance to transient overvoltage that can occur on the 48V line, using a signal generator.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.33.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.33."
+    },
+    "8.53": {
+        "id": "8.53",
+        "title": "Transient event in lower limited operation range",
+        "purpose": "Evaluates the BMS's resistance to transient under-voltages on the 48V power line using a programmable power supply.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.34.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.34."
+    },
+    "8.54": {
+        "id": "8.54",
+        "title": "Ground loss in power supply",
+        "purpose": "Checks the behaviour of the system to a sudden ground loss of Kl.41 to the BMS, simulated by opening shutter S2.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 6.39.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 6.39."
+    },
+    "8.55": {
+        "id": "8.55",
+        "title": "Cell under voltage detection test",
+        "purpose": "Evaluates the effect of cell under-voltage on the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.6.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.6."
+    },
+    "8.56": {
+        "id": "8.56",
+        "title": "Pack voltage mismatch test",
+        "purpose": "Validates that the pack voltage measured by the BMS matches the summation of cell voltages measured by it.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.8.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.8."
+    },
+    "8.57": {
+        "id": "8.57",
+        "title": "High voltage isolation monitoring test",
+        "purpose": "Evaluates the high-voltage isolation monitoring mechanism implemented by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.12.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.12."
+    },
+    "8.58": {
+        "id": "8.58",
+        "title": "Current sensor failure detection test",
+        "purpose": "Evaluates the current-sensor failure monitoring mechanism implemented by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.13.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.13."
+    },
+    "8.59": {
+        "id": "8.59",
+        "title": "Relay failure detection test",
+        "purpose": "Evaluates the relay-failure monitoring mechanism implemented by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.14.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.14."
+    },
+    "8.60": {
+        "id": "8.60",
+        "title": "Thermistor failure detection test",
+        "purpose": "Evaluates the thermistor-failure detection mechanism implemented by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.16.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.16."
+    },
+    "8.61": {
+        "id": "8.61",
+        "title": "Pre charge failure test",
+        "purpose": "Evaluates the pre-charge failure detection mechanism implemented by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.17.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.17."
+    },
+    "8.62": {
+        "id": "8.62",
+        "title": "Diagnostic check",
+        "purpose": "Validates the diagnostic trouble codes (DTC) captured by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.18.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.18."
+    },
+    "8.63": {
+        "id": "8.63",
+        "title": "SOC accuracy test",
+        "purpose": "Validates the accuracy of SOC estimation performed by the BMS; SOC verification with higher/lower discharge rates and different temperatures may also be performed for better validation.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.19.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.19."
+    },
+    "8.64": {
+        "id": "8.64",
+        "title": "SOC correction test (Applicable for Coulomb counting algorithm)",
+        "purpose": "Validates the implementation of SOC correction during the charge-discharge cycle.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.22.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.22."
+    },
+    "8.65": {
+        "id": "8.65",
+        "title": "Derating due to temperature test",
+        "purpose": "Validates the derating-due-to-temperature strategy used by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.23.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.23."
+    },
+    "8.66": {
+        "id": "8.66",
+        "title": "Derating due to SOC test",
+        "purpose": "Validates the derating-due-to-SOC strategy used by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.24.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.24."
+    },
+    "8.67": {
+        "id": "8.67",
+        "title": "Derating due to energy test",
+        "purpose": "Validates the derating behaviour due to energy remaining to full charge or full discharge.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.25.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.25."
+    },
+    "8.68": {
+        "id": "8.68",
+        "title": "Discharge current limit test",
+        "purpose": "Validates the BMS behaviour when current exceeds the discharge current limit.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.26.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.26."
+    },
+    "8.69": {
+        "id": "8.69",
+        "title": "Charge current limit test",
+        "purpose": "Validates the BMS behaviour when current exceeds the charge current limit.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.27.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.27."
+    },
+    "8.70": {
+        "id": "8.70",
+        "title": "External CAN communication test",
+        "purpose": "Validates the CAN communication messages exchanged with the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.28.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.28."
+    },
+    "8.71": {
+        "id": "8.71",
+        "title": "CAN timeout error test",
+        "purpose": "Validates the BMS behaviour to error frames in CAN communication, and the scenario/threshold at which it sets a timeout error.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.29.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.29."
+    },
+    "8.72": {
+        "id": "8.72",
+        "title": "Charger handshake test",
+        "purpose": "Validates the BMS protocol used to communicate with the charger.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.30.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.30."
+    },
+    "8.73": {
+        "id": "8.73",
+        "title": "Operating mode test",
+        "purpose": "Validates all the operating modes of the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.31.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.31."
+    },
+    "8.74": {
+        "id": "8.74",
+        "title": "Cell balancing circuit failure detection test",
+        "purpose": "Validates the failure detection of the cell-balancing circuit by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.32.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.32."
+    },
+    "8.75": {
+        "id": "8.75",
+        "title": "Cell balancing condition test",
+        "purpose": "Validates the trigger points/conditions at which cell balancing starts.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.33.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.33."
+    },
+    "8.76": {
+        "id": "8.76",
+        "title": "Charge interlock test",
+        "purpose": "Validates the charge interlock feature provided by the BMS using an on/off-board charger and charging connector.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.34.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.34."
+    },
+    "8.77": {
+        "id": "8.77",
+        "title": "Max charge power test (Max available charge power test)",
+        "purpose": "Validates the maximum charge power available data sent by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.35.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.35."
+    },
+    "8.78": {
+        "id": "8.78",
+        "title": "Max discharge power test (Max available discharge power test)",
+        "purpose": "Validates the maximum discharge power available data sent by the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.36.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.36."
+    },
+    "8.79": {
+        "id": "8.79",
+        "title": "HVIL detection test (Battery cap/HVIL detection test)",
+        "purpose": "Validates the connector disconnect detection mechanism through the HVIL (High Voltage Interlock Loop) pins.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.37.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.37."
+    },
+    "8.80": {
+        "id": "8.80",
+        "title": "Pre charge error condition test",
+        "purpose": "Validates the pre-charge behaviour of the BMS using BMS/laptop/diagnostic tool/logger and motor.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.39.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.39."
+    },
+    "8.81": {
+        "id": "8.81",
+        "title": "Fan monitoring test",
+        "purpose": "Validates the fan operation provided by the BMS, if applicable, using a thermal chamber.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.40.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.40."
+    },
+    "8.82": {
+        "id": "8.82",
+        "title": "Monitoring parameters test",
+        "purpose": "Validates the number of parameters monitored by the BMS through the CAN log.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.41.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.41."
+    },
+    "8.83": {
+        "id": "8.83",
+        "title": "Fault LED test",
+        "purpose": "Validates the BMS fault LED functioning.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.42.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.42."
+    },
+    "8.84": {
+        "id": "8.84",
+        "title": "Thermal runaway detection test",
+        "purpose": "Validates that the BMS detects thermal runaway 5 minutes before fire or explosion, to give the user enough time to vacate; tested per AIS 004 Rev 1 thermal propagation test.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.44.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.44."
+    },
+    "8.85": {
+        "id": "8.85",
+        "title": "BMS ASIL rating test",
+        "purpose": "Validates the functional safety ASIL rating of the BMS.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.45.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.45."
+    },
+    "8.86": {
+        "id": "8.86",
+        "title": "Flashing test",
+        "purpose": "Validates the flashing (firmware programming) process using BMS, programmable power supply and flashing programmer.",
+        "requirements": "Refer TSES_Rev No:00_909 \u2013 7.47.",
+        "acceptance_criteria": "Refer TSES_Rev No:00_909 \u2013 7.47."
+    },
+    "8.87": {
+        "id": "8.87",
+        "title": "Cell tap short circuit test",
+        "purpose": "Validates the BMS behaviour when cell taps are short-circuited for some reason; two consecutive taps and two distant taps are each shorted, with functional test performed after.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall detect the cell tap short circuit and raise a fault. If the BMS has short-circuit protection for cell taps, it shall function normally after fault recovery without performance degradation, per the TVSM/approved supplier drawing. Functional status D shall be achieved."
+    },
+    "8.88": {
+        "id": "8.88",
+        "title": "Open circuit or wire off in the cell taps",
+        "purpose": "Validates the BMS behaviour during a cell-tap open-circuit or wire-off state, created by cutting the wire of a cell tap after waking up the BMS and closing the relay.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall be able to detect the open circuit in the cell taps within the detection time given in the TVSM/approved supplier drawing. Functional status D shall be achieved."
+    },
+    "8.89": {
+        "id": "8.89",
+        "title": "BMS Power supply over voltage test",
+        "purpose": "Evaluates the effect of operating the BMS at a supply voltage greater than the maximum operating voltage specified in the SRS.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall include protection for over-voltage and shall function normally after the test as per specification in TVSM/approved supplier drawing. Functional status D shall be achieved."
+    },
+    "8.90": {
+        "id": "8.90",
+        "title": "BMS power supply under voltage test",
+        "purpose": "Evaluates the effect of operating the BMS at a supply voltage lower than the minimum operating voltage specified in the SRS.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall include protection for under-voltage and shall function normally after the test as per specification in TVSM/approved supplier drawing. Functional status D shall be achieved."
+    },
+    "8.91": {
+        "id": "8.91",
+        "title": "Brief Interruptions",
+        "purpose": "Understands the behaviour of the BMS when subjected to brief power-supply interruptions of varying duration (per VDA320 E48-09), with interruption durations stepped from 100 \u00b5s to 2 s across multiple ranges, tested on 6 BMS units.",
+        "requirements": "Not separately listed; detailed test-pulse parameters (Ri, R, Z1/Z2, U48test, t1, t2, Tf, tr) are specified in the test procedure table.",
+        "acceptance_criteria": "Functional status A for dips with t1 < 100 \u00b5s; Functional status C for dips with t1 \u2265 100 \u00b5s. The dip duration t1 at which functional status A is first not reached must be documented."
+    },
+    "8.92": {
+        "id": "8.92",
+        "title": "Cell voltage sampling rate test",
+        "purpose": "Validates the BMS cell voltage sampling rate to ensure all relevant application frequencies are captured, by superimposing an AC pulse current (5% peak-to-peak of average current) over a 0.5C DC current at 0 Hz, 10 Hz and 100 Hz.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall detect voltage changes up to the frequency of sampling mentioned in the TVSM/approved supplier drawing. Functional status A shall be achieved."
+    },
+    "8.93": {
+        "id": "8.93",
+        "title": "Salt spray test (Corrosion)",
+        "purpose": "Checks the resistance of materials and surface coatings of a system/component to salt mist and salt water on streets in winter, generating corrosion-like conditions; tested per IEC 60068-2-52 using a severity from ISO 16750 Table 4/Annex A, operating mode 1.2.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "There shall be no changes that could impair normal performance (e.g., sealing function, marking and labelling shall remain visible). One or more functions may not perform as designed during the test but shall return automatically to normal operation after the test."
+    },
+    "8.94": {
+        "id": "8.94",
+        "title": "Paint Peel off test (Thickness, Peel off strength, Hot boil, Acid resistance, Salt spray)",
+        "purpose": "A group of five sub-tests evaluating paint/coating quality: (1) Thickness test - evaluates paint thickness using an electro-magnetic thickness gauge; (2) Peel off strength - evaluates coating/material resistance to various acidic materials; (3) Hot boil test - monitors the battery for signs of damage; (4) Acid resistance test - assesses ability to withstand acidic environments; (5) Salt spray test - assesses resistance to corrosion in harsh conditions.",
+        "requirements": "Refer TSES_355 (\u00a75.3 Thickness, \u00a75.8 Peel off strength, \u00a75.12 Hot boil, \u00a75.9 Acid resistance, \u00a75.14 Salt spray).",
+        "acceptance_criteria": "Refer TSES_355 (\u00a75.3 Thickness, \u00a75.8 Peel off strength, \u00a75.12 Hot boil, \u00a75.9 Acid resistance, \u00a75.14 Salt spray)."
+    },
+    "8.95": {
+        "id": "8.95",
+        "title": "PRV functionality and performance test (Flow Characteristics, Vibration+IPX7, Temperature Cycle, Flammability, Salt Fog, Mechanical Impact, Ingress Protection)",
+        "purpose": "A group of seven sub-tests on the Pressure Relief Vent (PRV): (1) Flow Characteristics - evaluates airflow before/after membrane burst for vent performance during unfavourable conditions like thermal runaway; (2) Vibration Test followed by IPX7 - assesses PRV resistance to vibration for structural integrity/leak-proofness; (3) Temperature Cycle Test - evaluates resistance to rapid temperature change/damp heat; (4) Flammability Test (not applicable to metal parts) - evaluates resistance to flame/radiant heat; (5) Salt Fog Test - evaluates metal part resistance to corrosion; (6) Mechanical Impact Test - tests metal part resistance to external impact/shock; (7) Ingress Protection test - tests dust-proofness and high-pressure/temperature water jet resistance.",
+        "requirements": "Not separately listed as a unified clause; individual test standards/conditions specified per sub-test (IEC 60529 vibration+IPX7; IEC-60068-2-14 temp cycle; UL 94 V0 flammability; IEC 60068-2-11 salt fog; IEC 62262:2002 IK10 impact; ISO 20653 ingress protection).",
+        "acceptance_criteria": "Flow Characteristics: opening pressure of PRV should match supplier/TVSM drawing/SRS/PDD. Vibration+IPX7: no structural deformation/damage; no water inside enclosure. Temperature Cycle: no deformation after test. Flammability: flame self-extinguishes within 10s, no cotton ignition/dripping. Salt Fog: no corrosion formed. Mechanical Impact: no damage/deformation. Ingress Protection: IP6K - no dust inside; IP9K - no water inside; IP66/67/68 - no dust & no water inside enclosure."
+    },
+    "8.96": {
+        "id": "8.96",
+        "title": "Dust test",
+        "purpose": "Verifies that the component's enclosure sufficiently protects against dust intrusion (windblown sand, road dust, etc.), since dust accumulation affects heat dissipation and electro-mechanical components; tested per IEC 60529 using a dust chamber.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "The battery pack should meet the requirement as mentioned in TVSM drawing / TVSM SRS / PDD / IEC 60529."
+    },
+    "8.97": {
+        "id": "8.97",
+        "title": "Pre charge circuit verification (if applicable)",
+        "purpose": "Verifies that the precharge circuit functions correctly during system startup, including voltage build-up across capacitors and the duration of the precharge phase; tested using a capacitor equivalent to motor-controller input capacitance, over 10 repeat cycles.",
+        "requirements": "Not separately listed; test setup, DSO probes, CAN/GUI logging specified in procedure.",
+        "acceptance_criteria": "The BMS shall charge the capacitor to at least 95% of the battery pack voltage at the end of the precharge cycle; the capacitor must reach the target voltage within the specified precharge duration; there should not be any abnormality observed during and after the test."
+    },
+    "8.98": {
+        "id": "8.98",
+        "title": "Precharge circuit failure detection by BMS",
+        "purpose": "Evaluates the pre-charge failure detection mechanism implemented by the BMS, using a capacitor at double the specified max capacitance, and subsequently shorting the output with thick wire (>10 sq mm) over repeated cycles.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS shall detect the precharge failure and log it into DTC or show a corresponding error; the precharge resistor should not fail during the test."
+    },
+    "8.99": {
+        "id": "8.99",
+        "title": "Insulation Monitoring Device functional test",
+        "purpose": "Ensures the Insulation Monitoring Device (IMD) functions correctly and reliably detects/monitors insulation failure in the system, by progressively reducing resistance via a potentiometer/rheostat connected across the IMD circuit.",
+        "requirements": "Not separately listed.",
+        "acceptance_criteria": "BMS should trigger a fault if the resistance value is below the specified limit; BMS should trigger the fault in less than the specified time as per SRS/PDD."
+    },
+    "8.100": {
+        "id": "8.100",
+        "title": "Slave BMS Communication Loss: Detection",
+        "purpose": "Verifies that the system correctly detects and handles the disconnection of a signal/communication connector from a slave BMS device, and triggers appropriate alarms or fault handling.",
+        "requirements": "Not separately listed; procedure includes disconnecting/reconnecting the slave connector and observing Master BMS response and recovery.",
+        "acceptance_criteria": "The disconnection of the slave BMS should be detected within the time defined by the BMS logic; the corresponding alarm/fault should be triggered and the battery should go to inactive mode."
+    },
+    "8.101": {
+        "id": "8.101",
+        "title": "Charging Logic Verification for Auxiliary Battery",
+        "purpose": "Verifies the charging logic for the auxiliary battery by the main battery/DC-DC converter, including maximum current, maximum voltage, and the conditions for starting and stopping charging (across 3 sub-tests: start conditions, current limit, and voltage/stop conditions).",
+        "requirements": "Record all voltage and current values during each stage; document the time taken to start and stop charging; capture any fault codes or system logs generated during the test.",
+        "acceptance_criteria": "Maximum charging current does not exceed the auxiliary battery's rated charging current; charging voltage remains within specified limits; charging is initiated only when the main battery voltage is above the defined threshold or the auxiliary battery voltage is below the charging threshold; charging is terminated when the auxiliary battery reaches full charge or the main battery voltage drops below the minimum allowed, as specified in BMS SRS/DIS."
+    }
+}
